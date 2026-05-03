@@ -1,0 +1,23 @@
+{
+  "name": "pp-cloudflare-dynamic-authority",
+  "main": "src/cloudflare-worker-loader.ts",
+  "compatibility_date": "2026-05-01",
+  "workflows": [
+    {
+      "name": "dynamic-tenant-workflow",
+      "binding": "WORKFLOW",
+      "class_name": "DynamicTenantWorkflow"
+    }
+  ],
+  "r2_buckets": [
+    { "binding": "TENANT_CODE", "bucket_name": "tenant-workflow-code" }
+  ],
+  "unsafe": {
+    "bindings": [
+      {
+        "name": "LOADER",
+        "type": "dynamic_worker_loader"
+      }
+    ]
+  }
+}

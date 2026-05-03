@@ -1,0 +1,13 @@
+{
+  "name": "pp-cloudflare-dynamic-authority",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Smallest-credible demo: Permission Protocol as the external authority layer for Cloudflare Dynamic Workers / Dynamic Workflows.",
+  "scripts": {
+    "demo": "node src/local-demo.mjs",
+    "demo:denied": "node src/local-demo.mjs --deny",
+    "check": "node src/local-demo.mjs --check"
+  },
+  "keywords": ["permission-protocol", "cloudflare", "dynamic-workers", "dynamic-workflows", "ai-agents", "approval", "receipts"]
+}

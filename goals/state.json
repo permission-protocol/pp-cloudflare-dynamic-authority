@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "goal": "Build a smallest-credible Permission Protocol demo for Cloudflare Dynamic Workers / Dynamic Workflows that shows PP as the external authority layer for dynamically generated agent code.",
+  "createdAt": "2026-05-03T11:40:00-06:00",
+  "status": "active",
+  "deliverables": [
+    { "name": "primitive recommendation", "status": "complete", "path": "README.md" },
+    { "name": "local runnable demo", "status": "complete", "path": "src/local-demo.mjs" },
+    { "name": "Cloudflare scaffold", "status": "complete", "path": "src/cloudflare-worker-loader.ts" },
+    { "name": "README with setup", "status": "complete", "path": "README.md" },
+    { "name": "architecture", "status": "complete", "path": "docs/architecture.md" },
+    { "name": "threat model", "status": "complete", "path": "docs/threat-model.md" },
+    { "name": "positioning draft", "status": "complete", "path": "docs/positioning-draft.md" },
+    { "name": "target list", "status": "complete", "path": "targets/outreach-targets.md" }
+  ],
+  "next": [
+    "Decide whether to put this in a new GitHub repo or under pp-demo/examples/cloudflare-dynamic-authority.",
+    "If Cloudflare beta access is available, replace scaffold with real wrangler deployment.",
+    "Wire real Permission Protocol approval API and webhook resume path."
+  ]
+}
