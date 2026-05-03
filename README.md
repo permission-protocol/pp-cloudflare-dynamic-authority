@@ -4,6 +4,14 @@ Smallest-credible demo showing Permission Protocol as the **external authority l
 
 Cloudflare made dynamic durable compute easy. Permission Protocol decides what that dynamic code is authorized to do.
 
+
+## Quickstart
+
+```bash
+npm run demo          # approval → receipt → deploy logged
+npm run demo:denied   # denied approval → workflow blocked, no deploy
+```
+
 ## The thesis
 
 Dynamic Workers and Dynamic Workflows make this pattern practical:
@@ -32,6 +40,28 @@ Why:
 So the demo centers on **Dynamic Workflows** and uses Dynamic Workers underneath.
 
 If beta access blocks real deployment, the repo still preserves the architecture with a local runnable mock plus Cloudflare-targeted scaffold.
+
+
+## Authority flow
+
+```mermaid
+flowchart TD
+  A[Agent or tenant generates workflow code] --> B[Cloudflare Worker Loader]
+  B --> C[Dynamic Worker sandbox]
+  C --> D[Dynamic Workflow run(event, step)]
+  D --> E[Safe steps run directly]
+  E --> F{Risky capability?}
+  F -- yes --> G[Permission Protocol approval request]
+  G --> H[Human signer reviews evidence]
+  H --> I{Decision}
+  I -- denied --> J[Workflow blocked; no deploy]
+  I -- approved --> K[Signed authority receipt]
+  K --> L[Workflow resumes]
+  L --> M[Capability binding verifies receipt]
+  M --> N[Deploy/action executes]
+  N --> O[Receipt ID logged with action]
+  F -- no --> P[Workflow continues]
+```
 
 ## What is in this repo
 

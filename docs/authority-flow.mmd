@@ -1,0 +1,16 @@
+flowchart TD
+  A[Agent or tenant generates workflow code] --> B[Cloudflare Worker Loader]
+  B --> C[Dynamic Worker sandbox]
+  C --> D[Dynamic Workflow run(event, step)]
+  D --> E[Safe steps run directly]
+  E --> F{Risky capability?}
+  F -- yes --> G[Permission Protocol approval request]
+  G --> H[Human signer reviews evidence]
+  H --> I{Decision}
+  I -- denied --> J[Workflow blocked; no deploy]
+  I -- approved --> K[Signed authority receipt]
+  K --> L[Workflow resumes]
+  L --> M[Capability binding verifies receipt]
+  M --> N[Deploy/action executes]
+  N --> O[Receipt ID logged with action]
+  F -- no --> P[Workflow continues]
